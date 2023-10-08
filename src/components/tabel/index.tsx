@@ -50,3 +50,30 @@ export function Tabel<T extends { key: React.ReactNode }>({
         </>
     )
 }
+
+/**
+ * Converts an array of data items into table items based on a mapper function.
+ *
+ * @template T - Generic type for the source data items.
+ * @template U - Generic type for the resulting table items.
+ * @param {T[] | undefined | null} data - Array of source data items.
+ * @param {(item: T) => U} mapper - Mapper function to transform source items to table items.
+ * @returns {U[]} - An array of resulting table items.
+ */
+export function convertDataToTableItems<
+    T,
+    U extends Record<keyof T, any> & { key: React.ReactNode }
+>(data: T[] | undefined | null, mapper: (item: T) => U): U[] {
+    const result: (U & { key: React.ReactNode })[] = []
+
+    if (data && data.length > 0) {
+        data.forEach((item, index) => {
+            const tableItem = mapper(item)
+            if (tableItem) {
+                result[index] = tableItem
+            }
+        })
+    }
+
+    return result
+}

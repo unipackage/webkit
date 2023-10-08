@@ -1,1 +1,5 @@
-export { Tabel, generateTabelColumns } from "./components/tabel"
+export {
+    Tabel,
+    generateTabelColumns,
+    convertDataToTableItems,
+} from "./components/tabel"
