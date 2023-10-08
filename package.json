@@ -1,0 +1,39 @@
+{
+  "name": "@dataswapjs/webutils",
+  "version": "0.1.0",
+  "description": "common web components",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build":"rm -rf ./dist;npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dataswap/webutils.git"
+  },
+  "keywords": [
+    "common",
+    "web",
+    "components"
+  ],
+  "author": "waynewyang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dataswap/webutils/issues"
+  },
+  "homepage": "https://github.com/dataswap/webutils#readme",
+  "dependencies": {
+    "@ant-design/cssinjs": "^1.17.0",
+    "@ant-design/icons": "^5.2.6",
+    "@types/node": "20.6.2",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "antd": "^5.9.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
