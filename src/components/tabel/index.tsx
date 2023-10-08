@@ -1,7 +1,7 @@
 import React from "react"
 import { Space, Table } from "antd"
 import { ColumnsType } from "antd/es/table"
-import { formatTitle } from "@shared/format"
+import { formatTitle } from "../../shared/format"
 
 /**
  * Props interface for the TableComponent.

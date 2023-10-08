@@ -6,19 +6,12 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "module": "CommonJS",
     "moduleResolution": "node",  
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "jsx": "react",
-    "incremental": false,
-    "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@shared/*": ["./src/shared/*"]
-    }
+    "incremental": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"],

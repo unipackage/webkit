@@ -1,1 +1,1 @@
-export { Tabel, generateTabelColumns } from "@/components/tabel"
+export { Tabel, generateTabelColumns } from "./components/tabel"
