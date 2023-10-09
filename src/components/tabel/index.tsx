@@ -62,7 +62,7 @@ export function Tabel<T extends { key: React.ReactNode }>({
  */
 export function convertDataToTableItems<
     T,
-    U extends Record<keyof T, any> & { key: React.ReactNode }
+    U extends Partial<Record<keyof T, any>> & { key: React.ReactNode }
 >(data: T[] | undefined | null, mapper: (item: T) => U): U[] {
     const result: (U & { key: React.ReactNode })[] = []
 
