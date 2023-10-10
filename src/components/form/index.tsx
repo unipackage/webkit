@@ -8,7 +8,7 @@ const formItemLayout = {
 }
 
 interface Field {
-    name: string
+    name?: string
     label: string
     customComponent?: React.ReactNode
     required?: boolean
@@ -70,26 +70,38 @@ export const Form: React.FC<FormProps> = ({
                 {...formItemLayout}
                 style={{ maxWidth: 600 }}
             >
-                {fields.map((field) => (
-                    <AntForm.Item
-                        key={field.name}
-                        label={field.label}
-                        name={field.name}
-                        hasFeedback
-                        rules={[
-                            {
-                                required: field.required !== false,
-                                message: `Please input ${field.label}`,
-                            },
-                        ]}
-                    >
-                        {field.customComponent ? (
-                            field.customComponent
-                        ) : (
-                            <Input placeholder={`Enter ${field.label}`} />
-                        )}
-                    </AntForm.Item>
-                ))}
+                {fields.map((field) =>
+                    field.name ? (
+                        <AntForm.Item
+                            key={field.name}
+                            label={field.label}
+                            name={field.name}
+                            hasFeedback
+                            rules={[
+                                {
+                                    required: field.required !== false,
+                                    message: `Please input ${field.label}`,
+                                },
+                            ]}
+                        >
+                            {field.customComponent ? (
+                                field.customComponent
+                            ) : (
+                                <Input placeholder={`Enter ${field.label}`} />
+                            )}
+                        </AntForm.Item>
+                    ) : (
+                        <AntForm.Item label={field.label}>
+                            {field.customComponent ? (
+                                field.customComponent
+                            ) : (
+                                <Input
+                                    placeholder={`New Enter ${field.label}`}
+                                />
+                            )}
+                        </AntForm.Item>
+                    )
+                )}
 
                 <AntForm.Item wrapperCol={{ span: 12, offset: 6 }}>
                     <Space>
@@ -106,12 +118,25 @@ export const Form: React.FC<FormProps> = ({
 
 export function convertDataToFormFields<T extends Record<string, any>>(
     obj: T,
-    customFieldRules?: Partial<Record<keyof T, Partial<Field>>>
+    customFieldRules?: Partial<Record<keyof T, Partial<Field>>>,
+    options?: {
+        blacklist?: string[]
+        whitelist?: string[]
+        extra?: Field[]
+    }
 ): Field[] {
     const fields: Field[] = []
 
     for (const key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            if (options?.blacklist && options.blacklist.includes(key)) {
+                continue
+            }
+
+            if (options?.whitelist && !options.whitelist.includes(key)) {
+                continue
+            }
+
             const fieldInfo = customFieldRules
                 ? customFieldRules[key as keyof T]
                 : ({} as Field)
@@ -124,5 +149,10 @@ export function convertDataToFormFields<T extends Record<string, any>>(
             fields.push(field)
         }
     }
+
+    if (options?.extra) {
+        fields.push(...options.extra)
+    }
+
     return fields
 }

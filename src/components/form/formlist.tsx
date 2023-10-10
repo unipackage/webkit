@@ -41,6 +41,7 @@ export const FormList: React.FC<FormListProps> = ({
     return (
         <AntForm.List
             name={name}
+            key={name}
             {...formItemLayout}
             initialValue={{
                 ...{ minLength: 1, maxLength: 10 },
