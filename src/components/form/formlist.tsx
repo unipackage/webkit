@@ -8,7 +8,6 @@ interface FormListProps {
     maxLength: number
     renderField?: (field: any) => React.ReactNode
     formItemLayout?: any
-    initialValues?: any[]
 }
 
 const formItemLayoutWithOutLabel = {
@@ -36,17 +35,11 @@ export const FormList: React.FC<FormListProps> = ({
     maxLength,
     renderField,
     formItemLayout,
-    initialValues,
 }) => {
     return (
         <AntForm.List
             name={name}
-            key={name}
-            {...formItemLayout}
-            initialValue={{
-                ...{ minLength: 1, maxLength: 10 },
-                ...initialValues,
-            }}
+            // {...formItemLayout}
             rules={[
                 {
                     validator: async (_, names) => {
@@ -86,15 +79,17 @@ export const FormList: React.FC<FormListProps> = ({
                                 ]}
                                 noStyle
                             >
-                                {index + 1}:{" "}
-                                {renderField ? (
-                                    renderField({ ...field })
-                                ) : (
-                                    <Input
-                                        placeholder={name}
-                                        style={{ width: "60%" }}
-                                    />
-                                )}{" "}
+                                <span>
+                                    {index + 1}:{" "}
+                                    {renderField ? (
+                                        renderField({ ...field })
+                                    ) : (
+                                        <Input
+                                            placeholder={name}
+                                            style={{ width: "60%" }}
+                                        />
+                                    )}{" "}
+                                </span>
                             </AntForm.Item>
                             {fields.length > 1 ? (
                                 <MinusCircleOutlined
