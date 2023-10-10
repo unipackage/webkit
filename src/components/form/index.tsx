@@ -61,43 +61,46 @@ export const Form: React.FC<FormProps> = ({
     }
 
     return (
-        <AntForm
-            name={name}
-            onFinish={onFinishHandler}
-            initialValues={initialValues}
-            {...formItemLayout}
-            style={{ maxWidth: 600 }}
-        >
-            {fields.map((field) => (
-                <AntForm.Item
-                    key={field.name}
-                    label={field.label}
-                    name={field.name}
-                    hasFeedback
-                    rules={[
-                        {
-                            required: field.required !== false,
-                            message: `Please input ${field.label}`,
-                        },
-                    ]}
-                >
-                    {field.customComponent ? (
-                        field.customComponent
-                    ) : (
-                        <Input placeholder={`Enter ${field.label}`} />
-                    )}
-                </AntForm.Item>
-            ))}
+        <>
+            {{ name } && <h3>{name}</h3>}
+            <AntForm
+                name={name}
+                onFinish={onFinishHandler}
+                initialValues={initialValues}
+                {...formItemLayout}
+                style={{ maxWidth: 600 }}
+            >
+                {fields.map((field) => (
+                    <AntForm.Item
+                        key={field.name}
+                        label={field.label}
+                        name={field.name}
+                        hasFeedback
+                        rules={[
+                            {
+                                required: field.required !== false,
+                                message: `Please input ${field.label}`,
+                            },
+                        ]}
+                    >
+                        {field.customComponent ? (
+                            field.customComponent
+                        ) : (
+                            <Input placeholder={`Enter ${field.label}`} />
+                        )}
+                    </AntForm.Item>
+                ))}
 
-            <AntForm.Item wrapperCol={{ span: 12, offset: 6 }}>
-                <Space>
-                    <Button type="primary" htmlType="submit">
-                        Submit
-                    </Button>
-                    <Button htmlType="reset">reset</Button>
-                </Space>
-            </AntForm.Item>
-        </AntForm>
+                <AntForm.Item wrapperCol={{ span: 12, offset: 6 }}>
+                    <Space>
+                        <Button type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                        <Button htmlType="reset">reset</Button>
+                    </Space>
+                </AntForm.Item>
+            </AntForm>
+        </>
     )
 }
 
