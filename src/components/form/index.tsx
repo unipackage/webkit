@@ -118,10 +118,8 @@ export function convertDataToFormFields<T extends Record<string, any>>(
             const field: Field = {
                 name: key,
                 label: fieldInfo?.label || formatTitle(key),
-                required: fieldInfo?.required || true,
-                customComponent: fieldInfo?.customComponent || (
-                    <Input placeholder={`Enter ${formatTitle(key)}`} />
-                ),
+                required: fieldInfo?.required,
+                customComponent: fieldInfo?.customComponent,
             }
             fields.push(field)
         }
