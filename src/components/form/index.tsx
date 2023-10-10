@@ -103,7 +103,7 @@ export const Form: React.FC<FormProps> = ({
 
 export function convertDataToFormFields<T extends Record<string, any>>(
     obj: T,
-    customFieldRules?: Partial<Record<keyof T, Field>>
+    customFieldRules?: Partial<Record<keyof T, Partial<Field>>>
 ): Field[] {
     const fields: Field[] = []
 
