@@ -143,11 +143,11 @@ export function convertDataToFormFields<T extends Record<string, any>>(
     }
 
     if (options?.extra) {
-        for (const reactNode in options.extra) {
-            fields.push({
+        fields.push(
+            ...options.extra.map((reactNode, _) => ({
                 customComponent: reactNode,
-            })
-        }
+            }))
+        )
     }
 
     return fields
