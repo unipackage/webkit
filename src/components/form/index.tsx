@@ -9,7 +9,7 @@ const formItemLayout = {
 
 interface Field {
     name?: string
-    label: string
+    label?: string
     customComponent?: React.ReactNode
     required?: boolean
 }
@@ -91,15 +91,7 @@ export const Form: React.FC<FormProps> = ({
                             )}
                         </AntForm.Item>
                     ) : (
-                        <AntForm.Item label={field.label}>
-                            {field.customComponent ? (
-                                field.customComponent
-                            ) : (
-                                <Input
-                                    placeholder={`New Enter ${field.label}`}
-                                />
-                            )}
-                        </AntForm.Item>
+                        field.customComponent
                     )
                 )}
 
@@ -122,7 +114,7 @@ export function convertDataToFormFields<T extends Record<string, any>>(
     options?: {
         blacklist?: string[]
         whitelist?: string[]
-        extra?: Field[]
+        extra?: React.ReactNode[]
     }
 ): Field[] {
     const fields: Field[] = []
@@ -151,7 +143,11 @@ export function convertDataToFormFields<T extends Record<string, any>>(
     }
 
     if (options?.extra) {
-        fields.push(...options.extra)
+        for (const reactNode in options.extra) {
+            fields.push({
+                customComponent: reactNode,
+            })
+        }
     }
 
     return fields
