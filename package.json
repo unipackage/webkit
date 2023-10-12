@@ -1,6 +1,6 @@
 {
-  "name": "@dataswapjs/webutils",
-  "version": "0.1.17",
+  "name": "@unipackage/webkit",
+  "version": "0.1.0",
   "description": "common web components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dataswap/webutils.git"
+    "url": "git+https://github.com/unipackage/webkit.git"
   },
   "keywords": [
     "common",
@@ -20,9 +20,9 @@
   "author": "waynewyang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dataswap/webutils/issues"
+    "url": "https://github.com/unipackage/webkit/issues"
   },
-  "homepage": "https://github.com/dataswap/webutils#readme",
+  "homepage": "https://github.com/unipackage/webkit#readme",
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.0",
     "@ant-design/icons": "^5.2.6",
