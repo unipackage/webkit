@@ -1,8 +1,8 @@
 export {
-    Tabel,
-    generateTabelColumns,
+    Table,
+    generateTableColumns,
     convertDataToTableItems,
-} from "./components/tabel"
+} from "./components/table"
 export { Descriptions } from "./components/description"
 export { convertDataToItems } from "./shared/convert"
 export { Form, convertDataToFormFields } from "./components/form"

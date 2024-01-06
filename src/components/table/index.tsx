@@ -1,5 +1,5 @@
 import React from "react"
-import { Space, Table } from "antd"
+import { Space, Table as AntTable } from "antd"
 import { ColumnsType } from "antd/es/table"
 import { formatTitle } from "../../shared/format"
 
@@ -18,7 +18,7 @@ interface ITableProps<T extends { key: React.ReactNode }> {
  * @param {Object} widthConfig - Configuration for column widths.
  * @returns {ColumnsType<T>} - An array of table columns.
  */
-export function generateTabelColumns<
+export function generateTableColumns<
     T extends { key: React.ReactNode }
 >(widthConfig: {
     [key in Exclude<keyof T, "key">]: string
@@ -39,14 +39,14 @@ export function generateTabelColumns<
  * @param {ITableProps<T>} props - The component's props.
  * @returns {JSX.Element} - A React JSX element representing the table component.
  */
-export function Tabel<T extends { key: React.ReactNode }>({
+export function Table<T extends { key: React.ReactNode }>({
     data,
     columns,
 }: ITableProps<T>) {
     return (
         <>
             <Space align="center" style={{ marginBottom: 16 }}></Space>
-            <Table columns={columns} dataSource={data} />
+            <AntTable columns={columns} dataSource={data} />
         </>
     )
 }
