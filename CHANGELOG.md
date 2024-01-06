@@ -1,5 +1,12 @@
 
 
+## [0.1.3](https://github.com/unipackage/webkit/compare/0.1.2...0.1.3) (2024-01-06)
+
+
+### Bug Fixes
+
+* 🐛 type check ([2efe1ea](https://github.com/unipackage/webkit/commit/2efe1ea603ea82939f6e723a8f9fa35cf5695855))
+
 ## [0.1.2](https://github.com/unipackage/webkit/compare/0.1.1...0.1.2) (2024-01-06)
 
 
