@@ -112,8 +112,8 @@ export function convertDataToFormFields<T extends Record<string, any>>(
     obj: T,
     customFieldRules?: Partial<Record<keyof T, Partial<Field>>>,
     options?: {
-        blacklist?: string[]
-        whitelist?: string[]
+        blacklist?: (keyof T)[]
+        whitelist?: (keyof T)[]
         extra?: React.ReactNode[]
     }
 ): Field[] {
