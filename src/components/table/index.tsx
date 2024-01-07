@@ -29,6 +29,7 @@ export function generateTableColumns<
             dataIndex: key,
             key,
             width: widthConfig?.[key as Exclude<keyof T, "key">] || undefined,
+            ellipsis: true,
         })
     )
 }
