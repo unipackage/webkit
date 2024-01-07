@@ -1,5 +1,12 @@
 
 
+## [0.1.4](https://github.com/unipackage/webkit/compare/0.1.3...0.1.4) (2024-01-07)
+
+
+### Bug Fixes
+
+* 🐛 width bug ([44b1120](https://github.com/unipackage/webkit/commit/44b1120421291864f935559d5f6493a2a65b02a0))
+
 ## [0.1.3](https://github.com/unipackage/webkit/compare/0.1.2...0.1.3) (2024-01-06)
 
 
