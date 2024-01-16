@@ -1,5 +1,12 @@
 
 
+# [1.1.0](https://github.com/unipackage/webkit/compare/1.0.0...1.1.0) (2024-01-16)
+
+
+### Features
+
+* 🎸 add convertDataToDescriptionsItems ([6cb025e](https://github.com/unipackage/webkit/commit/6cb025e928d213c2c0e491a38282a7d514356eec))
+
 # [1.0.0](https://github.com/unipackage/webkit/compare/0.1.4...1.0.0) (2024-01-16)
 
 
