@@ -1,5 +1,17 @@
 
 
+# [1.0.0](https://github.com/unipackage/webkit/compare/0.1.4...1.0.0) (2024-01-16)
+
+
+### Features
+
+* 🎸 update table feature ([e5b3d27](https://github.com/unipackage/webkit/commit/e5b3d27fe551df1172b8763b1c7c83d7a264792c))
+
+
+### BREAKING CHANGES
+
+* 🧨 table usage
+
 ## [0.1.4](https://github.com/unipackage/webkit/compare/0.1.3...0.1.4) (2024-01-07)
 
 
