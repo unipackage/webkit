@@ -51,7 +51,7 @@ export function convertDataToDescriptionsItems<T extends Object>(
             items.push({
                 key: key.toString(),
                 label: formatTitle(key.toString()),
-                children: <span>value</span>,
+                children: <>{value}</>,
                 ...special?.[key],
             })
         }
