@@ -1,5 +1,12 @@
 
 
+## [1.1.1](https://github.com/unipackage/webkit/compare/1.1.0...1.1.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* 🐛 convertDataToDescriptionsItems ([3ce1d87](https://github.com/unipackage/webkit/commit/3ce1d8711c62a02ec513627ce33003b1e6923b6d))
+
 # [1.1.0](https://github.com/unipackage/webkit/compare/1.0.0...1.1.0) (2024-01-16)
 
 
