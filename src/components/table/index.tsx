@@ -1,80 +1,61 @@
-import React from "react"
-import { Space, Table as AntTable } from "antd"
-import { ColumnsType } from "antd/es/table"
 import { formatTitle } from "../../shared/format"
-
-/**
- * Props interface for the TableComponent.
- * @template T - Generic type for data items.
- */
-interface ITableProps<T extends { key: React.ReactNode }> {
-    data: T[] // Array of data items to display in the table.
-    columns: ColumnsType<T> // Configuration for table columns.
-}
+import React from "react"
+import type { TablePaginationConfig } from "antd/es/table"
+import { ColumnsType, ColumnType, ColumnGroupType } from "antd/es/table"
 
 /**
  * Generates table columns based on the provided width configuration.
  * @template T - Generic type for data items.
- * @param {Object} widthConfig - Configuration for column widths.
+ * @param {Object} config - Configuration object containing shared and independent column settings.
+ * @param {ColumnGroupType<T> | ColumnType<T>} config.shared - Shared column settings.
+ * @param {Object} config.independent - Independent column settings for each key.
  * @returns {ColumnsType<T>} - An array of table columns.
  */
 export function generateTableColumns<
     T extends { key: React.ReactNode }
->(widthConfig: {
-    [key in Exclude<keyof T, "key">]: string
-}): ColumnsType<T> {
-    return Object.keys(widthConfig as Exclude<T, { key: React.ReactNode }>).map(
-        (key) => ({
-            title: formatTitle(key), // Format column titles using formatTitle function.
-            dataIndex: key,
-            key,
-            width: widthConfig?.[key as Exclude<keyof T, "key">] || undefined,
-            ellipsis: true,
-        })
-    )
-}
-
-/**
- * TableComponent displays data in a table.
- * @template T - Generic type for data items.
- * @param {ITableProps<T>} props - The component's props.
- * @returns {JSX.Element} - A React JSX element representing the table component.
- */
-export function Table<T extends { key: React.ReactNode }>({
-    data,
-    columns,
-}: ITableProps<T>) {
-    return (
-        <>
-            <Space align="center" style={{ marginBottom: 16 }}></Space>
-            <AntTable columns={columns} dataSource={data} />
-        </>
-    )
-}
-
-/**
- * Converts an array of data items into table items based on a mapper function.
- *
- * @template T - Generic type for the source data items.
- * @template U - Generic type for the resulting table items.
- * @param {T[] | undefined | null} data - Array of source data items.
- * @param {(item: T) => U} mapper - Mapper function to transform source items to table items.
- * @returns {U[]} - An array of resulting table items.
- */
-export function convertDataToTableItems<
-    T,
-    U extends Partial<Record<keyof T, any>> & { key: React.ReactNode }
->(data: T[] | undefined | null, mapper: (item: T) => U): U[] {
-    const result: (U & { key: React.ReactNode })[] = []
-
-    if (data && data.length > 0) {
-        data.forEach((item, index) => {
-            const tableItem = mapper(item)
-            if (tableItem) {
-                result[index] = tableItem
-            }
-        })
+>(config: {
+    shared: ColumnGroupType<T> | ColumnType<T>
+    independent: {
+        [key in Exclude<keyof T, "key">]: ColumnGroupType<T> | ColumnType<T>
     }
+}): ColumnsType<T> {
+    return Object.keys(
+        config.independent as Exclude<T, { key: React.ReactNode }>
+    ).map((key) => ({
+        title: formatTitle(key), // Use the key as the column title,and format column titles using formatTitle function.
+        dataIndex: key,
+        key, // Set the key for the column.
+        ...config.shared,
+        ...config.independent[key as Exclude<keyof T, "key">],
+    }))
+}
 
-    return result
+/**
+ * Extends each item in the input array with a key field.
+ * @template T - Generic type for data items.
+ * @param {Object} input - Input object containing an array of data and a key field.
+ * @param {T[]} input.dataArray - Array of data items.
+ * @param {keyof T} input.keyField - Key field to use for generating keys.
+ * @returns {T[]} - An array of data items with added key fields.
+ */
+export function extendWithKeyForTableData<T extends Object>(input: {
+    dataArray: T[]
+    keyField: keyof T
+}) {
+    return input.dataArray.map((data) => {
+        // Use the specified key field to generate the key.
+        const key = <>{JSON.stringify(data[input.keyField])}</>
+        return { ...data, key }
+    })
+}
+
+/**
+ * Interface for table props.
+ * @template T - Generic type for data items.
+ */
+export interface ITableProps<T> {
+    data: T[] // Array of data items.
+    pagination: TablePaginationConfig // Pagination configuration.
+    loading: boolean // Loading state.
+    onChange: (pagination: TablePaginationConfig) => void // Callback for change events.
 }

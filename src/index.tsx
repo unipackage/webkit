@@ -1,7 +1,7 @@
 export {
-    Table,
     generateTableColumns,
-    convertDataToTableItems,
+    extendWithKeyForTableData,
+    ITableProps,
 } from "./components/table"
 export { Descriptions } from "./components/description"
 export { convertDataToItems } from "./shared/convert"
