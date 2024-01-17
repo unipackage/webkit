@@ -1,5 +1,12 @@
 
 
+## [1.1.5](https://github.com/unipackage/webkit/compare/1.1.4...1.1.5) (2024-01-17)
+
+
+### Bug Fixes
+
+* 🐛 update react version ([29ac7f1](https://github.com/unipackage/webkit/commit/29ac7f1f6e28be7b3a8d657c0316b8367ad863d7))
+
 ## [1.1.4](https://github.com/unipackage/webkit/compare/1.1.3...1.1.4) (2024-01-17)
 
 
