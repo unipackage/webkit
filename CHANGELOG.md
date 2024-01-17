@@ -1,5 +1,12 @@
 
 
+## [1.1.2](https://github.com/unipackage/webkit/compare/1.1.1...1.1.2) (2024-01-17)
+
+
+### Bug Fixes
+
+* 🐛 update antd version to 5.13.1 ([72b409f](https://github.com/unipackage/webkit/commit/72b409f6f92226211f7a95b1ec392604e6ab643f))
+
 ## [1.1.1](https://github.com/unipackage/webkit/compare/1.1.0...1.1.1) (2024-01-16)
 
 
