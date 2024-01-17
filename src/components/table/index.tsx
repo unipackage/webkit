@@ -44,7 +44,7 @@ export function extendWithKeyForTableData<T extends Object>(input: {
 }) {
     return input.dataArray.map((data) => {
         // Use the specified key field to generate the key.
-        const key = <>{JSON.stringify(data[input.keyField])}</>
+        const key = JSON.stringify(data[input.keyField])
         return { ...data, key }
     })
 }
