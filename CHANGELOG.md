@@ -1,5 +1,12 @@
 
 
+## [1.1.4](https://github.com/unipackage/webkit/compare/1.1.3...1.1.4) (2024-01-17)
+
+
+### Bug Fixes
+
+* 🐛 tabel dobule key ([8950419](https://github.com/unipackage/webkit/commit/8950419df51f2290a69ae3c8cd3c70914b29eaad))
+
 ## [1.1.3](https://github.com/unipackage/webkit/compare/1.1.2...1.1.3) (2024-01-17)
 
 
